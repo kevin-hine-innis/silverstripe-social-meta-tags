@@ -1,0 +1,8 @@
+{
+  "name": "creativecodelabs/silverstripe-social-meta-tags",
+  "description": "Adds social media meta tags to Silverstripe sites.",
+  "type": "silverstripe-module",
+  "require": {
+	"silverstripe/framework": "^3.5.0"
+  }
+}
