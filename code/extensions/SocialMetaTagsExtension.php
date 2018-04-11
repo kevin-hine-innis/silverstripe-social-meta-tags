@@ -99,29 +99,29 @@ class SocialMetaTagsExtension extends DataExtension {
             $tags .= "\n<!-- OpenGraph Meta Tags -->\n";
 
 	        // og:type
-	        $tags .= "<meta name=\"og:site_name\" content=\"{$siteTitle}\" />\n";
+	        $tags .= "<meta property=\"og:site_name\" content=\"{$siteTitle}\" />\n";
 
             // og:site_name
-            $tags .= "<meta name=\"og:type\" content=\"{$ogType}\" />\n";
+            $tags .= "<meta property=\"og:type\" content=\"{$ogType}\" />\n";
 
             // og:title
             if (isset($titleText)) {
-                $tags .= "<meta name=\"og:title\" content=\"{$titleText}\" />\n";
+                $tags .= "<meta property=\"og:title\" content=\"{$titleText}\" />\n";
             }
 
             // og:image
             if (isset($imageLink)) {
-                $tags .= "<meta name=\"og:image\" content=\"{$imageLink}\" />\n";
+                $tags .= "<meta property=\"og:image\" content=\"{$imageLink}\" />\n";
             }
 
             // og:description
             if (isset($descriptionText)) {
-                $tags .= "<meta name=\"og:description\" content=\"{$descriptionText}\" />\n";
+                $tags .= "<meta property=\"og:description\" content=\"{$descriptionText}\" />\n";
             }
 
             // og:url
             if ($link != "") {
-                $tags .= "<meta name=\"og:url\" content=\"{$link}\" />\n";
+                $tags .= "<meta property=\"og:url\" content=\"{$link}\" />\n";
             }
 
             // Twitter
