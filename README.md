@@ -31,6 +31,7 @@ SilverStripe 3.5+
 ## Defaults
 By default, the module will use the following fields to populate the meta tags:
 
+* `og:type`				--> `"website"`
 * `og:site_name`		--> `SiteConfig.Title`
 * `og:title`			--> `Title`
 * `og:description`		--> `MetaDescription`
@@ -58,6 +59,9 @@ SocialMetaTags:
   images:	
     ClassName: 'FieldName'
     ClassName1: 'FieldName1'
+  types:
+    ClassName: 'website'
+    ClassName1: 'article'
 ```
 * `default_title` - override the default title field to use; `PageTitle` is used by default.
 * `default_description` - override the default description field to use; `MetaDescription` is used by default.
@@ -66,6 +70,7 @@ SocialMetaTags:
 * `titles` - an array of class names, with the value being the name of the Text field to use for title meta tags. Useful for adding social media meta tag output to DataObjects.
 * `descriptions` - an array of class names, with the value being the name of the Text field to use for description meta tags. Useful for adding social media meta tag output to DataObjects.
 * `images` - an array of class names, with the value being the name of the Image field to use for image meta tags. Useful for adding social media meta tag output to DataObjects.
+* `types` - an array of class names, with the value being the content to use for `og:type` met tag.
 
 ## Example `config.yml`
 ```yml
@@ -86,6 +91,8 @@ SocialMetaTags:
     Category: 'BeautyShot'
     Product: 'BeautyShot'
     Recipe: 'Image'
+  types:
+    Recipe: 'article'
   twitter_site: ''
 ```
 ## Adding social media meta tags to DataObjects

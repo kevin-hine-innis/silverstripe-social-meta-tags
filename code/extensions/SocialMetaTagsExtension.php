@@ -24,6 +24,8 @@ class SocialMetaTagsExtension extends DataExtension {
             $siteConfig = SiteConfig::current_site_config();
             $siteTitle = Convert::raw2att($siteConfig->Title);
 
+            $ogType = "website";
+
             // get specified fields
             $twitterSite = Config::inst()->get('SocialMetaTags', 'twitter_site');
 
@@ -35,7 +37,8 @@ class SocialMetaTagsExtension extends DataExtension {
             // get customized fields
             $descriptionsConfig = Config::inst()->get('SocialMetaTags','descriptions') ?: array();
             $imagesConfig = Config::inst()->get('SocialMetaTags', 'images') ?: array();
-            $titlesConfig = Config::inst()->get('SocialMetaTags', 'titles') ?: array();
+	        $titlesConfig = Config::inst()->get('SocialMetaTags', 'titles') ?: array();
+	        $typesConfig = Config::inst()->get('SocialMetaTags', 'types') ?: array();
 
             // if customized title field exists and is populated, use it
             if (array_key_exists($className, $titlesConfig)) {
@@ -60,6 +63,11 @@ class SocialMetaTagsExtension extends DataExtension {
                     $imageLink = $image->AbsoluteLink();
                 }
             }
+
+            // if customized type is set, use it.
+	        if (array_key_exists($className, $typesConfig)) {
+            	$ogType = $typesConfig[$className];
+	        }
 
             // if customized description field exists and is populated, use it
             if (array_key_exists($className, $descriptionsConfig)) {
@@ -90,8 +98,11 @@ class SocialMetaTagsExtension extends DataExtension {
             // OpenGraph
             $tags .= "\n<!-- OpenGraph Meta Tags -->\n";
 
+	        // og:type
+	        $tags .= "<meta name=\"og:site_name\" content=\"{$siteTitle}\" />\n";
+
             // og:site_name
-            $tags .= "<meta name=\"og:site_name\" content=\"{$siteTitle}\" />\n";
+            $tags .= "<meta name=\"og:type\" content=\"{$ogType}\" />\n";
 
             // og:title
             if (isset($titleText)) {
