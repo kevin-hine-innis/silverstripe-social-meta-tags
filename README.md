@@ -24,7 +24,7 @@ SilverStripe 3.5+
 
 
 ## Installation
-1. ``composer install creativecodelabs/silverstripe-social-meta-tags``
+1. ``composer require creativecodelabs/silverstripe-social-meta-tags``
 2. run a `/dev/build?flush=all`
 3. Without any configuration, the module will begin rendering social media meta tags for all page types. 
 
