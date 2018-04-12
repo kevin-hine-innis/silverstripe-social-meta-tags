@@ -59,7 +59,7 @@ class SocialMetaTagsExtension extends DataExtension {
             if (array_key_exists($className, $imagesConfig)) {
                 $imageField = $imagesConfig[$className];
                 $image = $owner->$imageField();
-                if ($image) {
+                if ($image && $image->ID != 0) {
                     $imageLink = $image->AbsoluteLink();
                 }
             }
@@ -67,7 +67,7 @@ class SocialMetaTagsExtension extends DataExtension {
             // if customized image field isn't populated, fall back to social meta image
             if (!isset($imageLink)) {
             	$image = $owner->SocialMetaImage();
-            	if ($image) {
+            	if ($image && $image->ID != 0) {
             		$imageLink = $image->AbsoluteLink();
 	            }
             }
