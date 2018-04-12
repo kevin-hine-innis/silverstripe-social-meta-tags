@@ -30,8 +30,8 @@ class SocialMetaTagsExtension extends DataExtension {
             $twitterSite = Config::inst()->get('SocialMetaTags', 'twitter_site');
 
             // get defaults
-            $defaultTitle = Config::inst()->get('SocialMetaTags', 'default_title');
-            $defaultDescription = Config::inst()->get('SocialMetaTags', 'default_description');
+            $defaultTitle = Config::inst()->get('SocialMetaTags', 'default_title') ?: "PageTitle";
+            $defaultDescription = Config::inst()->get('SocialMetaTags', 'default_description') ?: "MetaDescription";
             $metaDescriptionDefault = Config::inst()->get('SocialMetaTags', 'meta_description_default');
 
             // get customized fields
