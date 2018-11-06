@@ -22,9 +22,10 @@ Supported social media meta tags include:
 ## Requirements
 SilverStripe 3.5+
 
+Use the `4.0` tag ([master branch](https://github.com/InnisMaggiore/silverstripe-social-meta-tags/tree/master)) for SilverStripe 4 sites.
 
 ## Installation
-1. ``composer require creativecodelabs/silverstripe-social-meta-tags``
+1. ``composer require innis-maggiore/silverstripe-social-meta-tags``
 2. run a `/dev/build?flush=all`
 3. Without any configuration, the module will begin rendering social media meta tags for all page types. 
 
@@ -119,4 +120,4 @@ To add social media meta tags to DataObjects:
 * run a `/dev/build?flush=all`
 
 ## License
-This project is licensed under [GPL v3](./LICENSE)
+This project is licensed under the [New BSD License](./LICENSE)
