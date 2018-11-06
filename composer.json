@@ -1,7 +1,7 @@
 {
     "name": "innis-maggiore/silverstripe-social-meta-tags",
     "description": "Adds social media meta tags to Silverstripe sites.",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "homepage": "https://github.com/InnisMaggiore/silverstripe-social-meta-tags",
     "keywords": ["silverstripe", "social media", "meta tags"],
     "license": "BSD-3-Clause",
