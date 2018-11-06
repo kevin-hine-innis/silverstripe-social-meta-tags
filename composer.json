@@ -22,6 +22,11 @@
     "replace": {
         "creativecodelabs/silverstripe-social-meta-tags": "*"
     },
+    "autoload": {
+        "psr-4": {
+            "InnisMaggiore\\SilverstripeSocialMetaTags\\": "src/"
+        }
+    },
     "prefer-stable": true,
     "minimum-stability": "dev"
 }
