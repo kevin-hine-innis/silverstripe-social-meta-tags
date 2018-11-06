@@ -19,6 +19,9 @@
         "silverstripe/cms": "^3.5.0",
         "silverstripe/framework": "^3.5.0"
     },
+    "replace": {
+        "creativecodelabs/silverstripe-social-meta-tags": "*"
+    },
     "prefer-stable": true,
     "minimum-stability": "dev"
 }
