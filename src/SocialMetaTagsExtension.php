@@ -12,6 +12,7 @@ use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\ErrorPage\ErrorPage;
 use SilverStripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\CMS\Model\RedirectorPage;
 
 class SocialMetaTagsExtension extends DataExtension {
     private static $db = array(
@@ -23,7 +24,9 @@ class SocialMetaTagsExtension extends DataExtension {
     );
 
     public function updateCMSFields(FieldList $fields) {
-        if (is_subclass_of($this->getOwner(), SiteTree::class)) {
+        $owner = $this->getOwner();
+
+        if (is_subclass_of($owner, SiteTree::class) && $owner != RedirectorPage::class) {
             $fields->addFieldToTab('Root.Main.Metadata', TextareaField::create("SocialMetaDescription")->addExtraClass("stacked"));
             $fields->addFieldToTab('Root.Main.Metadata', UploadField::create("SocialMetaImage")->addExtraClass("stacked"));
         }
@@ -51,8 +54,8 @@ class SocialMetaTagsExtension extends DataExtension {
             // get customized fields
             $descriptionsConfig = Config::inst()->get($configClass,'descriptions') ?: array();
             $imagesConfig = Config::inst()->get($configClass, 'images') ?: array();
-	        $titlesConfig = Config::inst()->get($configClass, 'titles') ?: array();
-	        $typesConfig = Config::inst()->get($configClass, 'types') ?: array();
+            $titlesConfig = Config::inst()->get($configClass, 'titles') ?: array();
+            $typesConfig = Config::inst()->get($configClass, 'types') ?: array();
 
             // if customized title field exists and is populated, use it
             if (array_key_exists($className, $titlesConfig)) {
@@ -80,16 +83,16 @@ class SocialMetaTagsExtension extends DataExtension {
 
             // if customized image field isn't populated, fall back to social meta image
             if (!isset($imageLink)) {
-            	$image = $owner->SocialMetaImage();
-            	if ($image && $image->ID != 0) {
-            		$imageLink = $image->AbsoluteLink();
-	            }
+                $image = $owner->SocialMetaImage();
+                if ($image && $image->ID != 0) {
+                    $imageLink = $image->AbsoluteLink();
+                }
             }
 
             // if customized type is set, use it.
-	        if (array_key_exists($className, $typesConfig)) {
-            	$ogType = $typesConfig[$className];
-	        }
+            if (array_key_exists($className, $typesConfig)) {
+                $ogType = $typesConfig[$className];
+            }
 
             // if customized description field exists and is populated, use it
             if (array_key_exists($className, $descriptionsConfig)) {
@@ -120,8 +123,8 @@ class SocialMetaTagsExtension extends DataExtension {
             // OpenGraph
             $tags .= "\n<!-- OpenGraph Meta Tags -->\n";
 
-	        // og:type
-	        $tags .= "<meta property=\"og:site_name\" content=\"{$siteTitle}\" />\n";
+            // og:type
+            $tags .= "<meta property=\"og:site_name\" content=\"{$siteTitle}\" />\n";
 
             // og:site_name
             $tags .= "<meta property=\"og:type\" content=\"{$ogType}\" />\n";
