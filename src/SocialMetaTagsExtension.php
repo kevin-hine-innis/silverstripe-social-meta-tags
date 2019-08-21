@@ -23,6 +23,10 @@ class SocialMetaTagsExtension extends DataExtension {
         "SocialMetaImage"   => Image::class
     );
 
+    private static $owns = array(
+        "SocialMetaImage"
+    );
+
     public function updateCMSFields(FieldList $fields) {
         $owner = $this->getOwner();
 
