@@ -30,7 +30,7 @@ class SocialMetaTagsExtension extends DataExtension {
     public function updateCMSFields(FieldList $fields) {
         $owner = $this->getOwner();
 
-        if (is_subclass_of($owner, SiteTree::class) && !is_a($owner, RedirectorPage::class)) {
+        if (is_subclass_of($owner, SiteTree::class) && !is_a($owner, RedirectorPage::class) && !is_a($owner, ErrorPage::class)) {
             $fields->addFieldToTab('Root.Main.Metadata', TextareaField::create("SocialMetaDescription")->addExtraClass("stacked"));
             $fields->addFieldToTab('Root.Main.Metadata', UploadField::create("SocialMetaImage")->addExtraClass("stacked"));
         }
